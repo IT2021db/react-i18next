@@ -17,7 +17,7 @@ function App() {
         <div>
           {Object.keys(lngs).map((lng) => (<button key={lng} onClick={() => i18n.changeLanguage(lng)} disabled={i18n.resolvedLanguage === lng}>
             {lngs[lng].nativeName}
-             </button>))}
+          </button>))}
         </div>
         <p>
           <Trans i18nKey="description">
