@@ -1,39 +1,29 @@
 import i18next from 'i18next';
-import sprintf from 'i18next-sprintf-postprocessor';
+import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
-i18next.init({
-  debug: true,
-  lng: 'en',
-  fallbacksNS: 'common',
-  resources: {
-    en: {
-      translation: {
-        key: 'To jest {{what}} i jest {{ -how}}',
-        look: {
-          deeper: 'some deep key'
+i18next
+  .use(initReactI18next)
+  .use(LanguageDetector)
+  .init({
+    debug: true,
+    fallbackLng: 'en',
+    resources: {
+      en: {
+        translation: {
+          learn: 'Learn React easily',
+          description: 'Edit <1>src/App.js</1> and save to reload.'
         }
       },
-      common: {
-        save: 'Save',
-        cancel: 'Cancel'
-      }
-    },
-    pl: {
-      translation: {
-        key: 'Hejka!'
-      },
-      common: {
-        save: 'Zapisz',
-        cancel: 'Wyjdź'
+      pl: {
+        translation: {
+          learn: 'Naucz się Reacta',
+          description: 'Edytuj <1>src/App.js</1> i zapisz aby załadować ponownie.'
+        }
       }
     }
-  }
-})
+  });
 
-const ret = i18next.t('key', { what: 'i18next', how: '<i>awesome</i>' });
-//const bun = i18next.t('common:save', { lng: 'pl' });
-//const bip = i18next.t('common:save', { lng: 'en' })
-//console.log(i18next.t('key'));
-console.log(ret);
-//console.log(bun);
-//console.log(bip);
+
+export { i18next };
+
